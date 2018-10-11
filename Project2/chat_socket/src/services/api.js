@@ -48,7 +48,7 @@ export function createSocket(){
 // 统一调用发送socket接口
 function sendSocket(obj, callback){
   // 带上token
-  obj.token = cookie.get('token');
+  obj.token = cookie.get('token') || '';
 
   // 断线情况
   if (!isConnect){
