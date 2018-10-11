@@ -3,13 +3,13 @@ import DetailPage from '../routes/DetailPage';
 
 export default {
   routes: [{
-    path: '/',
+    path: '/index',
     component: IndexPage
   },{
     path: '/detail',
     component: DetailPage,
     children: [{
-      path: '/detail/100',
+      path: '/detail/home',
       component: ()=><h1>detail 100</h1>
     }]
   }]
