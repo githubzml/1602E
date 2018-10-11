@@ -7,6 +7,12 @@ export default {
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
+      return history.listen(({ pathname }) => {
+        if (pathname === '/') {
+          console.log('hello world');
+          // dispatch({ type: 'load' });
+        }
+      });
     },
   },
 

@@ -2,14 +2,16 @@ import React from 'react';
 import { connect } from 'dva';
 import { Carousel } from 'antd';
 import styles from './IndexPage.scss';
+import RouterView from '../router/routerView';
 
-class IndexPage extends React.Component{
+class DetailPage extends React.Component{
   constructor(){
     super()
   }
 
   componentDidMount(){
-    this.props.getMiaosha();
+    // this.props.getMiaosha();
+    console.log('detail...', this.props.history);
   }
 
   onChange(e){
@@ -17,6 +19,7 @@ class IndexPage extends React.Component{
   }
 
   render(){
+    console.log('this.props.routes', this.props.routes);
     const imgs = ['http://t00img.yangkeduo.com/goods/images/2018-09-16/fad4f23851c59cc1e590139b781b3d11.jpeg?imageView2/q/50/2/w/750/format/webp',
       'http://t00img.yangkeduo.com/goods/images/2018-09-18/01084e8e789e6b47b26d23e84d2e07a0.jpeg?imageView2/q/50/2/w/750/format/webp',
       'http://t00img.yangkeduo.com/goods/images/2018-09-18/0aad3bccbf3d0a2b4df657b8479714fd.jpeg?imageView2/q/50/2/w/750/format/webp',
@@ -26,17 +29,15 @@ class IndexPage extends React.Component{
     ]
     return <div>
       <header>我是header</header>
-      {/* <Carousel afterChange={this.onChange.bind(this)}>{
+      <Carousel afterChange={this.onChange.bind(this)}>{
         imgs.map((item, index)=>{
           return <img src={item} key={index}></img>
         })
-      }</Carousel> */}
+      }</Carousel>
+      <RouterView routes={this.props.routes}></RouterView>
     </div>;
   }
 }
-
-IndexPage.propTypes = {
-};
 
 export default connect(null, (dispatch)=>{
   return {
@@ -46,4 +47,4 @@ export default connect(null, (dispatch)=>{
       })
     }
   }
-})(IndexPage);
+})(DetailPage);
