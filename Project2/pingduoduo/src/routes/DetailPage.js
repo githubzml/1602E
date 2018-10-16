@@ -4,14 +4,25 @@ import { Carousel } from 'antd';
 import styles from './IndexPage.scss';
 import RouterView from '../router/routerView';
 
-class DetailPage extends React.Component{
+class DetailPage extends React.PureComponent{
   constructor(){
     super()
+    this.state = {
+      list:[]
+    }
   }
 
   componentDidMount(){
     // this.props.getMiaosha();
     console.log('detail...', this.props.history);
+    setInterval(()=>{
+      let {list} = this.state;
+      list.push(list.length+1);
+      list = [...list];
+      this.setState({
+        list
+      })
+    }, 1000);
   }
 
   onChange(e){
@@ -34,6 +45,11 @@ class DetailPage extends React.Component{
           return <img src={item} key={index}></img>
         })
       }</Carousel>
+      <li>{
+        this.state.list.map((item, index)=>{
+          return <p key={index}>{item}</p>
+        })
+      }</li>
       <RouterView routes={this.props.routes}></RouterView>
     </div>;
   }

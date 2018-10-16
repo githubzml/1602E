@@ -13,15 +13,15 @@ export default {
     setup({ dispatch, history }) {  // eslint-disable-line
       return history.listen(({ pathname }) => {
         if (pathname == '/') {
-          dispatch(routerRedux.push({
-            pathname: '/detail',
-            query: {
-              page:2
-            },
-            state: {
-              a: 1
-            }
-          })),
+          // dispatch(routerRedux.push({
+          //   pathname: '/detail',
+          //   query: {
+          //     page:2
+          //   },
+          //   state: {
+          //     a: 1
+          //   }
+          // })),
           console.log('hello world');
           // dispatch({ type: 'load' });
         }
